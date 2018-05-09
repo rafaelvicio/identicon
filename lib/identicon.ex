@@ -11,10 +11,12 @@ defmodule Identicon do
     hex
     |> Enum.chunk(3)
     |> mirror_row
+    |> Enum.map(&mirror_row/1)
   end
 
-  def mirror_row() do
-
+  def mirror_row(row) do
+    [firts, second | _tail ] = row
+    row ++ [second, firts]
   end
 
   def pick_color(image) do
